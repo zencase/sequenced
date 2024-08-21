@@ -62,6 +62,8 @@ module Sequenced
         base_relation
           .where("#{column} IS NOT NULL")
           .order("#{column} DESC")
+          .limit(1)
+          .lock(true)
       end.first
     end
 
